@@ -1,3 +1,7 @@
 defmodule Rtex.Renderer do
-  @callback render(Rtex.Scene, Rtex.Viewport) :: nil
+
+  def render(scene, opts \\ []) do
+    {renderer, opts} = Keyword.pop(opts, :renderer, nil)
+    renderer.render(scene)
+  end
 end
