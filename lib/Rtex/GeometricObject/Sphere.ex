@@ -3,7 +3,7 @@ defmodule Rtex.GeometricObject.Sphere do
 
     alias Rtex.Math.Vec3, as: Vec3
 
-    defstruct centre: nil, radius: 1
+    defstruct centre: nil, radius: 1, colour: {0, 0, 0}
 
     defimpl Rtex.GeometricObject, for: Rtex.GeometricObject.Sphere  do
       def hit(model, ray, t_min) do
@@ -27,7 +27,7 @@ defmodule Rtex.GeometricObject.Sphere do
                                 |> Vec3.scale(1/model.radius),
                       hit_point: Vec3.scale(ray.direction, t)
                                 |> Vec3.add(ray.origin),
-                      colour: {1.0, 0, 0}
+                      colour: model.colour
                   }
                   {true, shade_rec}
               else
@@ -40,7 +40,7 @@ defmodule Rtex.GeometricObject.Sphere do
                                 |> Vec3.scale(1/model.radius),
                         hit_point: Vec3.scale(ray.direction, t2)
                                 |> Vec3.add(ray.origin),
-                        colour: {1.0, 0, 0}
+                        colour: model.colour
                       }
                       {true, shade_rec}     
                   else

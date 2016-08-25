@@ -9,7 +9,8 @@ scene = %Scene{
     models: [
         %Sphere{
             centre: {0, 0, 0},
-            radius: 85
+            radius: 85,
+            colour: {1, 0, 0}
         }
     ]
 }
@@ -18,4 +19,4 @@ IO.inspect scene
 
 scene
     |> Rtex.Renderer.render(renderer: Rtex.Renderer.SimpleRenderer)
-    |> Rtex.Image.save("scenes/simple.ppm", 200, 200, format: Rtex.Image.Ppm)
+    |> Rtex.Image.save("scenes/single_sphere.ppm", format: Rtex.Image.Ppm)

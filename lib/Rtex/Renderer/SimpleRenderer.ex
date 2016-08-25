@@ -11,7 +11,8 @@ defmodule Rtex.Renderer.SimpleRenderer do
 
             ray = %Rtex.Ray{ direction: {0, 0, -1}, origin: {x, y, 100}}
 
-            trace_ray(scene, ray)
+            colour = trace_ray(scene, ray)
+            {r, c, colour}
         end
     end
 

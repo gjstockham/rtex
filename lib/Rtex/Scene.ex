@@ -4,15 +4,16 @@ defmodule Rtex.Scene do
     def hit(scene, ray) do
         t_min = 1000000
         
-        hit_any_object(scene.models, ray, t_min, nil)   
-    
-    end
+        hit_object = hit_any_object(scene.models, ray, t_min, nil)   
+     end
 
     def hit_any_object([head | tail], ray, t_min, current_nearest) do
         case Rtex.GeometricObject.hit(head, ray, t_min) do
             {true, shade_rec} ->
                 if shade_rec.t < t_min do
                     hit_any_object(tail, ray, shade_rec.t, shade_rec)
+                else
+                    hit_any_object(tail, ray, t_min, current_nearest)
                 end
             {false, _} -> 
                 hit_any_object(tail, ray, t_min, current_nearest)
