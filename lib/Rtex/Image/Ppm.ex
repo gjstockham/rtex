@@ -13,7 +13,6 @@ defmodule Rtex.Image.Ppm do
         IO.inspect width
         {:ok, file} = File.open filename, [:write]
         IO.binwrite file, "P3\n#{width+1} #{height+1}\n255\n"
-        IO.inspect sorted
         Enum.map(sorted, fn({r, c, colour}) -> colour end)
             |> write_line(file)
         File.close file

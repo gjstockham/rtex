@@ -3,7 +3,7 @@ defmodule Rtex.Math.Vec3 do
     Creates new vector
 
     ## Examples
-    iex> Raytracer.Vec3.new(3, 4, 5)
+    iex> Rtex.Math.Vec3.new(3, 4, 5)
     {3, 4, 5}
     """
     def new(x, y, z) do
@@ -14,7 +14,7 @@ defmodule Rtex.Math.Vec3 do
     Adds two vectors
 
     ## Examples
-    iex> Raytracer.Vec3.add {1, 2, 3}, {4, 5, 6}
+    iex> Rtex.Math.Vec3.add {1, 2, 3}, {4, 5, 6}
     {5, 7, 9}
     """
     def add({x1, y1, z1}, {x2, y2, z2}) do
@@ -25,7 +25,7 @@ defmodule Rtex.Math.Vec3 do
     Sumtracts two vectors
 
     ## Examples
-    iex> Raytracer.Vec3.subtract {4, 5, 6}, {1, 2, 3}
+    iex> Rtex.Math.Vec3.subtract {4, 5, 6}, {1, 2, 3}
     {3, 3, 3}
     """
     def subtract({x1, y1, z1}, {x2, y2, z2}) do
@@ -37,7 +37,7 @@ defmodule Rtex.Math.Vec3 do
     Scales vector
 
     ## Examples
-    iex> Raytracer.Vec3.scale {1, 2, 3}, 2
+    iex> Rtex.Math.Vec3.scale {1, 2, 3}, 2
     {2, 4, 6}
     """
     def scale({x, y, z}, n) do
@@ -48,7 +48,7 @@ defmodule Rtex.Math.Vec3 do
     Scales vector
 
     ## Examples
-    iex> Raytracer.Vec3.scale 2, {1, 2, 3}
+    iex> Rtex.Math.Vec3.scale 2, {1, 2, 3}
     {2, 4, 6}
     """
     def scale(n, v) do
@@ -59,7 +59,7 @@ defmodule Rtex.Math.Vec3 do
     Calculates length of a vector
 
     ## Examples
-    iex> Raytracer.Vec3.length {3, 4, 5}
+    iex> Rtex.Math.Vec3.length {3, 4, 5}
     7.0710678118654755
     """
     def length({x, y, z}) do
@@ -70,7 +70,7 @@ defmodule Rtex.Math.Vec3 do
     Calculates the square of the length of a vector
 
     ## Examples
-    iex> Raytracer.Vec3.length_squared {3, 4, 5}
+    iex> Rtex.Math.Vec3.length_squared {3, 4, 5}
     50
     """
     def length_squared({x, y, z}) do
@@ -81,7 +81,7 @@ defmodule Rtex.Math.Vec3 do
     Calculates the cross product of two vectors
 
     ## Examples
-    iex> Raytracer.Vec3.cross {1, 2, 3}, {3, 2, 1}
+    iex> Rtex.Math.Vec3.cross {1, 2, 3}, {3, 2, 1}
     {-4, 8, -4}
     """
     def cross({x1, y1, z1}, {x2, y2, z2}) do
@@ -94,7 +94,7 @@ defmodule Rtex.Math.Vec3 do
     Calculates the dot product of two vectors
 
     ## Examples
-    iex> Raytracer.Vec3.dot {1, 2, 3}, {3, 2, 1}
+    iex> Rtex.Math.Vec3.dot {1, 2, 3}, {3, 2, 1}
     10
     """
     def dot({x1, y1, z1}, {x2, y2, z2}) do
@@ -105,7 +105,7 @@ defmodule Rtex.Math.Vec3 do
     Calculates the vector of unit length
 
     ## Examples
-    iex> Raytracer.Vec3.unit {1, 2, 3}
+    iex> Rtex.Math.Vec3.unit {1, 2, 3}
     {0.2672612419124244, 0.5345224838248488, 0.8017837257372732}
     """
     def unit(v) do
