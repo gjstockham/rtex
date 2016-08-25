@@ -1,19 +1,25 @@
 defmodule Rtex.Renderer.SimpleRenderer do
             
     def render(scene) do
-        
+        vp = scene.viewplane
 
-        for j <- (scene.camera.height-1)..0,
-            i <- 0..(scene.camera.width-1) do
+        for r <- 0..(vp.rows-1),
+            c <- 0..(vp.columns-1) do
 
-            ray = Rtex.Camera.get_ray(scene.camera, i, j)        
+            x = vp.pixel_size * (c - 0.5 * (vp.columns - 1))
+            y = vp.pixel_size * (r - 0.5 * (vp.rows - 1))
+
+            ray = %Rtex.Ray{ direction: {0, 0, -1}, origin: {x, y, 100}}
 
             trace_ray(scene, ray)
         end
     end
 
     def trace_ray(scene, ray) do
-        Rtex.Hit.hit(scene, ray)
+        case Rtex.Scene.hit(scene, ray) do
+            {true, shade_rec} -> shade_rec.colour
+            {false, _} -> scene.background_colour
+        end
     end
 
 end

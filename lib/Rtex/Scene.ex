@@ -1,31 +1,30 @@
 defmodule Rtex.Scene do
-    defstruct camera: nil, models: nil, lights: nil, background_colour: {0, 0, 0}
+    defstruct camera: nil, models: nil, lights: nil, background_colour: {0, 0, 0}, viewplane: nil
 
-    defimpl Rtex.Hit, for: Rtex.Scene  do
-       def hit(scene, ray) do
-           case Rtex.Scene.closest_hit(scene, ray) do
-               {_, nil} -> 
-                   IO.puts "Miss"
-                   scene.background_colour
-               {tmin, model} -> 
-                   IO.puts "Hit"
-                   Rtex.Scene.colour(scene, ray, tmin, model, 50)
-           end
-       end
+    def hit(scene, ray) do
+        t_min = 1000000
+        
+        hit_any_object(scene.models, ray, t_min, nil)   
+    
     end
 
-    def closest_hit(scene, ray) do
-        Enum.reduce(scene.models, {1000000, nil}, fn (model, current_closest = {tmin, _}) ->
-            dist = Rtex.GeometricObject.intersect(model, ray)
-            if dist < tmin do
-                {dist, model}
-            else
-                current_closest
-            end
-        end)
+    def hit_any_object([head | tail], ray, t_min, current_nearest) do
+        case Rtex.GeometricObject.hit(head, ray, t_min) do
+            {true, shade_rec} ->
+                if shade_rec.t < t_min do
+                    hit_any_object(tail, ray, shade_rec.t, shade_rec)
+                end
+            {false, _} -> 
+                hit_any_object(tail, ray, t_min, current_nearest)
+        end
     end
 
-    def colour(scene, ray, tmin, object, depth) do
-        {1, 0, 0}
+    def hit_any_object([], ray, t_min, current_nearest) do
+        if is_nil(current_nearest) do
+            {false, nil}
+        else
+            {true, current_nearest}
+        end
     end
+
 end

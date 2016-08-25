@@ -1,3 +1,3 @@
 defprotocol Rtex.GeometricObject do
-  def intersect(model, ray)
+  def hit(model, ray, t_min) 
 end
