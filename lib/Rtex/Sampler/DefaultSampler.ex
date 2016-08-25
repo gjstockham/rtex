@@ -1,5 +1,5 @@
 defmodule Rtex.Sampler.DefaultSampler do
-    @doc """
+    @moduledoc """
     Generates samples based on a simple grid
 
     ## Examples
@@ -12,11 +12,11 @@ defmodule Rtex.Sampler.DefaultSampler do
     """
     def generate_samples(n) do
         size = round(:math.sqrt(n))
-        for p <- 0..(size-1),
-            q <- 0..(size-1) do
+        for p <- 0..(size - 1),
+            q <- 0..(size - 1) do
 
-            x = ((p+0.5)/size) - 0.5
-            y = ((q+0.5)/size) - 0.5    
+            x = ((p + 0.5) / size) - 0.5
+            y = ((q + 0.5) / size) - 0.5    
 
             {x, y}
         end

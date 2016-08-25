@@ -1,4 +1,8 @@
 defmodule Rtex.Math.Vec3 do
+    @moduledoc """
+    Basic vector maths
+    """
+
     @doc """
     Creates new vector
 
@@ -74,7 +78,7 @@ defmodule Rtex.Math.Vec3 do
     50
     """
     def length_squared({x, y, z}) do
-        (x*x) + (y*y) + (z*z)
+        (x * x) + (y * y) + (z * z)
     end
 
     @doc """
@@ -86,8 +90,8 @@ defmodule Rtex.Math.Vec3 do
     """
     def cross({x1, y1, z1}, {x2, y2, z2}) do
          {(y1 * z2 - z1 * y2),
-		 (-1 * (x1 * z2 - z1 * x2)),
-		 (x1 * y2 - y1 * x2)}
+         (-1 * (x1 * z2 - z1 * x2)),
+         (x1 * y2 - y1 * x2)}
     end
 
     @doc """
@@ -98,7 +102,7 @@ defmodule Rtex.Math.Vec3 do
     10
     """
     def dot({x1, y1, z1}, {x2, y2, z2}) do
-        (x1*x2) + (y1*y2) + (z1*z2)
+        (x1 * x2) + (y1 * y2) + (z1 * z2)
     end
 
     @doc """

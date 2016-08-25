@@ -1,12 +1,15 @@
 defmodule Rtex.Renderer.SimpleRenderer do
-            
+    @moduledoc """
+    Simple, seqential renderer
+    """        
+
     def render(scene, sampler) do
         vp = scene.viewplane
         zw = 100
         n = round(:math.sqrt(vp.num_samples))
 
-        for r <- 0..(vp.rows-1),
-            c <- 0..(vp.columns-1) do
+        for r <- 0..(vp.rows - 1),
+            c <- 0..(vp.columns -  1) do
 
             base_colour = {0, 0, 0}
 
@@ -18,7 +21,7 @@ defmodule Rtex.Renderer.SimpleRenderer do
         end
     end
 
-    def trace_sampled_ray([head|tail], r, c, scene, vp, zw, colour)  do
+    def trace_sampled_ray([head|tail], r, c, scene, vp, zw, colour) do
         
         {x, y} = head
         
@@ -26,7 +29,7 @@ defmodule Rtex.Renderer.SimpleRenderer do
         ppx = vp.pixel_size * (c - 0.5 * vp.columns + x)
         ppy = vp.pixel_size * (r - 0.5 * vp.rows + y)
 
-        ray = %Rtex.Ray{ direction: {0, 0, -1}, origin: {ppx, ppy, zw}}
+        ray = %Rtex.Ray{direction: {0, 0, -1}, origin: {ppx, ppy, zw}}
         ray_colour = trace_ray(scene, ray)
         accumulated_colour = Rtex.Math.Vec3.add(ray_colour, colour)
 
@@ -39,7 +42,7 @@ defmodule Rtex.Renderer.SimpleRenderer do
 
     def trace_ray(scene, ray) do
         case Rtex.Scene.hit(scene, ray) do
-            {true, shade_rec} -> shade_rec.colour
+            {true, shade_rec} -> shade_rec.material.colour
             {false, _} -> scene.background_colour
         end
     end

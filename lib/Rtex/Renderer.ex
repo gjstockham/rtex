@@ -1,4 +1,7 @@
 defmodule Rtex.Renderer do
+  @moduledoc """
+  Base module for all renderers
+  """
 
   def render(scene, opts \\ []) do
     {renderer, opts} = Keyword.pop(opts, :renderer, nil)

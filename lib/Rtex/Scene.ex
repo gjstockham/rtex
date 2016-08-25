@@ -1,8 +1,12 @@
 defmodule Rtex.Scene do
+    @moduledoc """
+    Details of the scene to be rendered, such as objects, camera and lights
+    """
+
     defstruct camera: nil, models: nil, lights: nil, background_colour: {0, 0, 0}, viewplane: nil
 
     def hit(scene, ray) do
-        t_min = 1000000
+        t_min = 1_000_000
         
         hit_object = hit_any_object(scene.models, ray, t_min, nil)   
      end

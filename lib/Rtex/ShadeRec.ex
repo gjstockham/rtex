@@ -1,4 +1,8 @@
 defmodule Rtex.ShadeRec do
+    @moduledoc """
+    Details of a ray that hits an object
+    """
+
     defstruct(
         hit_point: nil, 
         normal: nil, 
