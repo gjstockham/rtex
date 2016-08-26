@@ -16,7 +16,7 @@ defmodule Rtex.Image.Ppm do
         {:ok, file} = File.open filename, [:write]
         IO.binwrite file, "P3\n#{width+1} #{height+1}\n255\n"
         sorted 
-            |> Enum.map(sorted, fn({r, c, colour}) -> colour end)
+            |> Enum.map(fn({r, c, colour}) -> colour end)
             |> write_line(file)
         File.close file
     end

@@ -1,7 +1,3 @@
-defmodule Rtex.Material do
-    @moduledoc """
-    Description of object's material
-    """
-
-    defstruct colour: nil
+defprotocol Rtex.Material do
+    def shade(material, shade_rec, ambient, lights) 
 end

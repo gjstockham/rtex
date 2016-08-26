@@ -16,7 +16,6 @@ defmodule Rtex.Renderer.SimpleRenderer do
             samples = sampler.generate_samples(vp.num_samples)
             
             colour = trace_sampled_ray(samples, r, c, scene, vp, zw, base_colour)
-            
             {r, c, colour}
         end
     end
@@ -42,7 +41,7 @@ defmodule Rtex.Renderer.SimpleRenderer do
 
     def trace_ray(scene, ray) do
         case Rtex.Scene.hit(scene, ray) do
-            {true, shade_rec} -> shade_rec.material.colour
+            {true, shade_rec} -> Rtex.Material.shade(shade_rec.material, shade_rec, scene.ambient, scene.lights)
             {false, _} -> scene.background_colour
         end
     end

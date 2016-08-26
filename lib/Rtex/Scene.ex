@@ -3,7 +3,7 @@ defmodule Rtex.Scene do
     Details of the scene to be rendered, such as objects, camera and lights
     """
 
-    defstruct camera: nil, models: nil, lights: nil, background_colour: {0, 0, 0}, viewplane: nil
+    defstruct camera: nil, models: nil, ambient: nil, lights: nil, background_colour: {0, 0, 0}, viewplane: nil
 
     def hit(scene, ray) do
         t_min = 1_000_000
@@ -31,5 +31,6 @@ defmodule Rtex.Scene do
             {true, current_nearest}
         end
     end
+
 
 end

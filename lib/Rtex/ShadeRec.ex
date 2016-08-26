@@ -9,6 +9,7 @@ defmodule Rtex.ShadeRec do
         material: nil, 
         ray: nil,
         depth: 0,
-        t: 0.0)
+        t: 0.0
+        )
     
 end

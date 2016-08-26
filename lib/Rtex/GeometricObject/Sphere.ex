@@ -33,7 +33,8 @@ defmodule Rtex.GeometricObject.Sphere do
                       hit_point: ray.direction
                                 |> Vec3.scale(t)
                                 |> Vec3.add(ray.origin),
-                      material: model.material
+                      material: model.material,
+                      ray: ray
                   }
                   {true, shade_rec}
               else
@@ -48,7 +49,8 @@ defmodule Rtex.GeometricObject.Sphere do
                         hit_point: ray.direction
                                 |> Vec3.scale(t2)
                                 |> Vec3.add(ray.origin),
-                        material: model.material
+                        material: model.material,
+                        ray: ray
                       }
                       {true, shade_rec}     
                   else
