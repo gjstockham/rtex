@@ -35,5 +35,12 @@ defmodule Rtex.GeometricObject.Sphere do
               end
           end
       end
+
+      def normal(model, ray) do
+          {true, t} = hit(model, ray, 0.001)
+          N = Rtex.Ray.point_at_parameter(t)
+                |> Rtex.Math.Vec3(model.origin)
+                |> Rtex.Math.Vec3.unit
+      end
     end
 end

@@ -59,7 +59,9 @@ defmodule Rtex.Renderer do
   end
 
   def get_colour(ray, model, scene) do
-    {1.0, 0, 0}  
+    {x, y, z} = Rtex.GeometricObject.normal(model, ray)
+    Rtex.Math.Vec3.new(x + 1, y + 1, z + 1)
+      |> Rtex.Math.Vec3.scale(0.5)
   end
 
   def get_background_colour(ray, scene) do
