@@ -57,7 +57,11 @@ defmodule Rtex.Renderer do
       _ -> {true, current_nearest}
     end
   end
-  
+
+  def get_colour(ray, model, scene) do
+    {1.0, 0, 0}  
+  end
+
   def get_background_colour(ray, scene) do
     {x, y, z} = Rtex.Math.Vec3.unit(ray.direction)
     t = 0.5 * (y + 1)
