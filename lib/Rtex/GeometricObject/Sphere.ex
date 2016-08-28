@@ -38,9 +38,9 @@ defmodule Rtex.GeometricObject.Sphere do
 
       def normal(model, ray) do
           {true, t} = hit(model, ray, 0.001)
-          N = Rtex.Ray.point_at_parameter(t)
-                |> Rtex.Math.Vec3(model.origin)
-                |> Rtex.Math.Vec3.unit
+          Rtex.Ray.point_at_parameter(ray, t)
+              |> Rtex.Math.Vec3.subtract(model.centre)
+              |> Rtex.Math.Vec3.unit
       end
     end
 end
