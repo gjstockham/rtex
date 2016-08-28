@@ -1,9 +1,5 @@
 defmodule Rtex.Camera do
-  def get_ray(camera, x, y) do
+  
+    defstruct position: {0, 0, 0}, horizontal: {4, 0, 0}, vertical: {0, 2, 0}, lower_left_corner: {-2, -1, -1}
     
-  end
-
-  def create(position, look_at, up, fov) do
-    
-  end
 end

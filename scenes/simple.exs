@@ -1,11 +1,7 @@
 
-
-camera = Rtex.Camera.create({0, 1, 1}, {0, 0, -1}, {0, 1, 0}, 20)
-
-
 scene = %Rtex.Scene{
     viewplane: %Rtex.ViewPlane{rows: 100, columns: 200 },
-    camera: camera,
+    camera: %Rtex.Camera{},
     models: [
         %Rtex.GeometricObject.Sphere{
             centre: {0, 0, -1},

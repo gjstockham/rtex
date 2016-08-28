@@ -22,6 +22,21 @@ defmodule Rtex.Renderer do
   def render_pixel(row, col, scene) do
     nx = scene.viewplane.columns
     ny = scene.viewplane.rows
-    {col, row, {col / nx, row / ny, 0.2}}
+    u = col / nx
+    v = row / ny
+    direction = scene.camera.lower_left_corner
+        |> Rtex.Math.Vec3.add(Rtex.Math.Vec3.scale(u, scene.camera.horizontal))
+        |> Rtex.Math.Vec3.add(Rtex.Math.Vec3.scale(v, scene.camera.vertical))
+    ray = Rtex.Ray.create(scene.camera.position, direction)
+    colour = get_colour(scene, ray)
+    {col, row, colour}
+  end
+
+  def get_colour(scene, ray) do
+    {x, y, z} = Rtex.Math.Vec3.unit(ray.direction)
+    t = 0.5 * (y + 1)
+    {1.0, 1.0, 1.0}
+      |> Rtex.Math.Vec3.scale(1.0 - t)
+      |> Rtex.Math.Vec3.add(Rtex.Math.Vec3.scale({0.5, 0.7, 1.0}, t))
   end
 end
