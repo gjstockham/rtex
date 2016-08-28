@@ -1,5 +1,4 @@
 .vscode/
-*.ppm
 
 # The directory Mix will write compiled artifacts to.
 /_build
@@ -18,3 +17,8 @@ erl_crash.dump
 
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
+
+# The images output folder
+/_output
+*.ppm
+

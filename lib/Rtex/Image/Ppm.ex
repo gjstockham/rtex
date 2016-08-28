@@ -4,13 +4,14 @@ defmodule Rtex.Image.Ppm do
     """
 
     def save(data, filename) do
-        sorted = Enum.sort(data, fn({r1, c1, _}, {r2, c2, _}) -> 
-            if r1 == r2 do
-                c1 < c2
-            else
-                r1 > r2
-            end    
-        end)
+#        sorted = Enum.sort(data, fn({r1, c1, _}, {r2, c2, _}) -> 
+#            if r1 == r2 do
+#                c1 < c2
+#            else
+#                r1 > r2
+#            end    
+#        end)
+        sorted = data
         height = data |> Enum.map(fn({r, c, _}) -> r end) |> Enum.max
         width = data |> Enum.map(fn({r, c, _}) -> c end) |> Enum.max
         {:ok, file} = File.open filename, [:write]
