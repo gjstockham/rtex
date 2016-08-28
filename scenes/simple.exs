@@ -4,7 +4,7 @@ camera = Rtex.Camera.create({0, 1, 1}, {0, 0, -1}, {0, 1, 0}, 20)
 
 
 scene = %Rtex.Scene{
-    viewplane: %Rtex.ViewPlane{rows: 200, columns: 100 },
+    viewplane: %Rtex.ViewPlane{rows: 100, columns: 200 },
     camera: camera,
     models: [
         %Rtex.GeometricObject.Sphere{

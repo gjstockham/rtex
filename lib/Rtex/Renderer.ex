@@ -5,26 +5,23 @@ defmodule Rtex.Renderer do
 
   def render(scene) do
     scene
-      |> generate_pixels
-      |> generate_colour
+      |> render_pixels
+      |> List.flatten
   end
 
-  def generate_pixels(scene) do
+  def render_pixels(scene) do
     nx = scene.viewplane.columns
     ny = scene.viewplane.rows
-    Enum.map(0..(nx-1), fn(x) -> Enum.map(0..(ny-1), fn(y) -> {x, y} end) end)
+    for row <- (ny - 1)..0 do
+      for col <- 0..(nx - 1) do
+        render_pixel(row, col, scene)
+      end
+    end
   end
 
-  def generate_colour([head|tail]) do
-    trace_ray(head)
-    generate_colour(tail)
-  end
-
-  def generate_colour([]) do
-    IO.puts "Finished generating colours"
-  end
-
-  def trace_ray({x, y}) do
-    {x, y, {0.1, 0.2, 0.3}}
+  def render_pixel(row, col, scene) do
+    nx = scene.viewplane.columns
+    ny = scene.viewplane.rows
+    {col, row, {col / nx, row / ny, 0.2}}
   end
 end
