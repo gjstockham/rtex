@@ -1,5 +1,7 @@
 defmodule Rtex do
-    @moduledoc """
-        Base renderer classes - Ray Tracing from the Ground Up
-    """
+    use Application
+
+    def start(_type, _args) do
+        IO.puts "Starting..."
+    end
 end
